@@ -24,24 +24,37 @@ client.on('ready', () => {
     request({
       url: url,
       json: true
-  }, function (error, response, body) {
-      // var string ='';
-      // var sstring = '';
+  },function (error, response, body) {
+     // var string ='';
+     // var sstring = '';
       if (!error && response.statusCode === 200) {
-          let entry = body    
-          console.log(entry.length) 
-          var sl = 0; var sll = 0;var slca = 0; var slmed = 0;var slch = 0; var slqy = 0;
-          for (let i=1; i<entry.length; i++) {
-           
-            let name = entry[i]["name"].toLowerCase().trim(); 
-                   if (name.indexOf('ca') == 0 || name.indexOf('gđca') == 0 || name.indexOf('gdca') == 0 || name.indexOf('pgdca') == 0 || name.indexOf('pgđca') == 0 || name.indexOf('qlca') == 0   || name.indexOf('swat') == 0  ) slca++;
-              else if (name.indexOf('med') == 0 || name.indexOf('gđbs') == 0 || name.indexOf('gdbs') == 0 || name.indexOf('pgdbs') == 0  || name.indexOf('pgđbs') == 0 || name.indexOf('bs') == 0 ) slmed++;
-              else if (name.indexOf('ch') == 0 || name.indexOf('gđch') == 0 || name.indexOf('gdch') == 0 || name.indexOf('pgđch') == 0 || name.indexOf('pgdch') == 0 ||  name.indexOf('qlch') == 0  || name.indexOf('pqlch') == 0 ) slch++;
-          } 
-                 var d = new Date();
-            client.user.setActivity('Với RinCor.' , { type: 'PLAYING' })
-            // client.user.setActivity('Cung Cấp Bot Check')
-      }   
+          const fromDb = undefined;
+
+// ✅ Provide empty string fallback
+const str = fromDb || '';
+
+// ✅ Using optional chaining
+const result5 = str?.length;
+
+// ✅ Provide `0` as fallback if `undefined`
+const result6 = str?.length || 0;
+
+// ✅ Use typeof
+if (typeof str === 'string') {
+  const result7 = str.length;
+} else {
+  console.log('str is not a string');
+}
+
+// ✅ Provide fallback in place
+const result8 = (str || '').length; {
+         if (!error && response.statusCode === 200) {
+          let entry = body 
+          
+            client.user.setActivity('HÀO SẸO THẤT TÌNH' , { type: 'WATCHING' })
+          }}
+      }
+      
   })
   },9000);
   }
@@ -79,13 +92,42 @@ client.on('message', message => {
       });
       return dec;
   }
+/////// Bot info 
+  if ( command ==',botinfo')
+          {
+             const exampleEmbed = new Discord.MessageEmbed()
+       .setAuthor(
+        `Thông Tin Của ${message.client.user.username} Bot`,
+        `
+        ${message.client.user.displayAvatarURL()}`
+      )
+      .addField("💻 Bot Name",`\`\`\`Công An Liêm Chính\`\`\``)
+      .addField("💻 Nhà Phát Triển Bot", `\`\`\`Bi Monkey\`\`\``)
+      .addField("💻 Discord Bi Monkey ",
+       `<@830536730100105246>`)
+      .addField("💻 Ping", `\`\`\`${client.ws.ping}\`\`\``)
+      .addField("💻 uptime", `\`\`\`${(client.uptime)}ms\`\`\``)
+      .addField("💻 Độ trễ API", `\`${(client.ws.ping)}ms\``, true)
+      .addField(
+        "💻 Link Invite Bot **MONKEY COW**",
+        `[Invite](https://discord.com/api/oauth2/authorize?client_id=971115485276029040&permissions=8&scope=bot)
+     `
+      )
+      .setImage(`${message.client.user.displayAvatarURL()}`)
+      .setColor("RANDOM")
+      
+      .setFooter("Coded by: Bi Monkey")
 
+message.channel.send(exampleEmbed);
+          
+              }
 
 ///=============== CACHE ==================
 
 if (command == ',cache'){{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+  if(message.author.id === 'some id')
+    return message.channel.send(`Có cc mà check được, ${message.author}!`)};
+  
   request(
            {
               url: url,
@@ -116,9 +158,11 @@ if (command == ',cache'){{
 
 
 ///=============== LINK DISCORD ==================
+
 if (command == ',link'){{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+  if(message.member.roles.cache.some(r => r.name === 'Homie'))
+    return message.channel.send(`Bạn không đủ quyền hạn để check, ${message.author}!`)};
+
   request(
            {
               url: url,
@@ -146,8 +190,9 @@ if (command == ',link'){{
 /// IP ///
   
   if (command == ',ip'){{
-   if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+ if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+          
                        request({
           url: url,
           json: true
@@ -181,8 +226,10 @@ const exampleEmbed = new Discord.MessageEmbed()
   ///==================UPTIME=====================///
 
   if (command == ',uptime') {{
-    if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+     if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+  
+
     request(
             {
                   url: url,
@@ -223,7 +270,10 @@ const exampleEmbed = new Discord.MessageEmbed()
 
   if (command == ',id') {{
      if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+  
+
+          
       request({
           url: url,
           json: true
@@ -294,7 +344,8 @@ const exampleEmbed = new Discord.MessageEmbed()
 
  if (command == ',bothelp'){{
      if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+          
             request({
           url: url,
           json: true
@@ -315,8 +366,8 @@ const exampleEmbed = new Discord.MessageEmbed()
           string = string + '+ Check MED                       :____,med \n';
           string = string + '+ Check CH                        :____,ch \n';
           string = string + '+ Check CA                        :____,ca \n';
-          string = string + '+ Check gang Thiên Triều          :____,tt \n';
-          string = string + '+ Check gang Immortal             :____,im \n';
+          string = string + '+ Check gang Legends              :____,lg \n';
+          string = string + '+ Check gang Immortal             :____,imt \n';
           string = string + '+ Check gang MJ                   :____,mj \n';
           string = string + '+ Check gang Squad                :____,sq \n'
           string = string + '+ Check gang ACA                  :____,aca \n';
@@ -327,7 +378,6 @@ const exampleEmbed = new Discord.MessageEmbed()
           string = string + '+ Check nhóm RB                   :____,rb \n';
           string = string + '+ Check nhóm VietJetAir           :____,viet  \n';
           string = string + '+ Check nhóm Equality             :____,equality  \n';
-          string = string + '+ Check nhóm LG                   :____,lg  \n';
           string = string + '+ Check nhóm Marabunta            :____,mara  \n';
           string = string + '+ Check nhóm PT                   :____,pt \n';
           string = string + '+ Check nhóm SEAL                 :____,seal \n';
@@ -342,8 +392,8 @@ const exampleEmbed = new Discord.MessageEmbed()
 //====================================//
   
 if (command == ',alice'){{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+     if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
           
             request({
           url: url,
@@ -369,7 +419,7 @@ if (command == ',alice'){{
   
   if (command == ',can'){{
      if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
           
             request({
           url: url,
@@ -394,7 +444,7 @@ if (command == ',alice'){{
 
 if (command == ',rep'){{
      if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
           
             request({
           url: url,
@@ -415,9 +465,8 @@ if (command == ',rep'){{
 ///////
   
   if (command == ',gen'){{
-    if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
-          
+     if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
             request({
           url: url,
           json: true
@@ -435,9 +484,31 @@ if (command == ',rep'){{
           
       })  
 }   
+  /////
+  if (command == ',pig'){{
+     if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+          
+            request({
+          url: url,
+          json: true
+           }, function (error, response, body) {
+          var string ='';
+          if (!error && response.statusCode === 200) {
+          let entry = body
+          console.log(entry.length) 
+          string = string + 'Cầm Mồm Đồ Fri3nd z0n3? \n';
+          string = string + 'https://c.tenor.com/h_p46ba4PPkAAAAM/friendzone-selfie.gif \n';
+          
+       message.delete();
+                 message.channel.send(`${string} <@445142222896234497>`);
+          }
+          })  
+}   
+  /////
 if (command == ',fujin'){{
-    if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+     if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
           
             request({
           url: url,
@@ -479,6 +550,7 @@ const exampleEmbed = new Discord.MessageEmbed()
              .setTitle('Kiếm Tiền Donate cho Đồn' )
              .setThumbnail(usingGIF)
              .setTimestamp()
+             .setImage('https://images-ext-1.discordapp.net/external/6i0G1cg8Wlm8_yOWi2xUx4H65PT7K1c57Wzldx51NMo/%3Fauto%3Dformat%26fit%3Dcrop/https/ph-files.imgix.net/59a17072-b477-46ce-99e9-6278a8dbb959.gif')
              .setFooter(XLfooter, monkeylogo)
              .addFields(
                            { name: ' 🐵 Có bán nitro các loại , giá rẻ bất ngờ ', value:' **- Boots :**\n 1 tháng = 190k\n 1 năm = 1tr100 \n **- Classic :**\n 1 tháng = 100k\n 1 năm = 600k', inline: false }, 
@@ -511,8 +583,8 @@ message.delete();
  ///========== INFO CU DÂN ==========///
 
  if (command == ',check') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -565,7 +637,7 @@ if (command == ',search')
 {
   {
   if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
   
   request({
     url: url,
@@ -643,8 +715,8 @@ if (command == ',search')
 // new info CA
 
 if (command == ',ca') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -721,8 +793,8 @@ if (command == ',ca') {{
 /// new info CH
 
 if (command == ',ch') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -784,8 +856,8 @@ if (command == ',ch') {{
 
 //======== INFO MED ============== 
 if (command == ',med') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -849,8 +921,8 @@ if (command == ',med') {{
 /// new info Thien Trieu
 
 if (command == ',tt') {{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+  if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -926,103 +998,12 @@ if (command == ',tt') {{
       })  
 }
 
-// new info XL
-
-if (command == ',xl') {{
-  if(message.member.roles.cache.some(r => r.name === 'Homie'))
-    return message.channel.send(`Bạn không đủ quyền hạn để check, ${message.author}!`)};
-
-            request({
-          url: url,
-          json: true
-      }, 
-        function (error, response, body) {
-          var string ='';
-          if (!error && response.statusCode === 200) {
-              let entry = body
-              console.log(entry.length) 
-              let slall = entry.length;
-              function cach(maxcach , length)
-              {
-                khoangcach = "                                                                                                                                                                                    "
-                return khoangcach.substring(0, maxcach - length)
-              }
-             
-              var slxl = 0; var slhc = 0;
-              for (let i=1; i<entry.length; i++) {
-                var b = entry[i]["name"];
-                if(b.substring(0,8) == 'Xóm Liều' || b.substring(0,8) == 'XÓM LIỀU'){
-                  slxl = slxl + 1;
-                 }
-                if((b.substring(0,4) == 'Liều' || b.substring(0,4) == 'LIỀU' 
-                || b.substring(0,3) == '|S|' || b.substring(0,3) == '|L|' || b.substring(0,3) == '|X|' || b.substring(0,3) == '|T|' 
-                || b.substring(0,5) == '| S |' || b.substring(0,5) == '| L |' || b.substring(0,5) == '| X |' || b.substring(0,5) == '| T |'
-                || b.substring(0,3) == 'S |' || b.substring(0,3) == 'L |' || b.substring(0,3) == 'X |' || b.substring(0,3) == 'T |'
-                || b.substring(0,2) == 'S|' || b.substring(0,2) == 'L |' || b.substring(0,2) == 'X|' || b.substring(0,2) == 'T|'
-                || b.substring(0,4) == ' S |' || b.substring(0,4) == ' L |' || b.substring(0,4) == ' X |' || b.substring(0,4) == ' T |')) {
-                  slhc = slhc + 1;
-                }
-              }
-              let indexarr = 0;
-              let resarrstr = [""]
-              var stt = 1;
-              for (let i=0; i<entry.length; i++) 
-              {
-                var b = entry[i]["name"];
-                if(b.substring(0,8) == 'Xóm Liều' || b.substring(0,8) == 'XÓM LIỀU')
-                {
-                  let ID = '[ID:' + entry[i]["id"] + ']' +cach(4 , entry[i]["id"].toString().length)
-                  resarrstr[indexarr] += `\n#${stt + cach(3 , stt.toString().length)}${ID}: ${entry[i]["name"]}`
-                  stt= stt + 1;
-                  if (resarrstr[indexarr].length > 900) resarrstr[++indexarr] =""
-                  if (!resarrstr[indexarr])  resarrstr.splice(indexarr, 1)
-                }
-              } 
-              
-              for (let i=0; i<entry.length; i++) 
-              {
-                var b = entry[i]["name"];
-                if(b.substring(0,4) == 'Liều' || b.substring(0,4) == 'LIỀU' 
-                || b.substring(0,3) == '|S|' || b.substring(0,3) == '|L|' || b.substring(0,3) == '|X|' || b.substring(0,3) == '|T|' 
-                || b.substring(0,5) == '| S |' || b.substring(0,5) == '| L |' || b.substring(0,5) == '| X |' || b.substring(0,5) == '| T |'
-                || b.substring(0,3) == 'S |' || b.substring(0,3) == 'L |' || b.substring(0,3) == 'X |' || b.substring(0,3) == 'T |'
-                || b.substring(0,2) == 'S|' || b.substring(0,2) == 'L |' || b.substring(0,2) == 'X|' || b.substring(0,2) == 'T|'
-                || b.substring(0,4) == ' S |' || b.substring(0,4) == ' L |' || b.substring(0,4) == ' X |' || b.substring(0,4) == ' T |'){
-                  let ID = '[ID:' + entry[i]["id"] + ']' +cach(4 , entry[i]["id"].toString().length)
-                  resarrstr[indexarr] += `\n#${stt + cach(3 , stt.toString().length)}${ID}: ${entry[i]["name"]}`
-                  stt= stt + 1;
-                  if (resarrstr[indexarr].length > 900) resarrstr[++indexarr] =""
-                  if (!resarrstr[indexarr])  resarrstr.splice(indexarr, 1)
-                }
-              }
-            indexarr = indexarr - 1;
-            for (let i=0 ; i< resarrstr.length ; i++)
-            {
-              const exampleEmbed = new Discord.MessageEmbed()
-              .setColor('#42f5b3')
-              .setTitle('Xóm Liều: ' + slxl + ' | Liều: '+ slhc)
-              .setAuthor('Anh Chị Em RP.', 'https://cdn.discordapp.com/attachments/569209589967486984/811540612989845524/ACE_logo_7000x7000_300ppi.png')                    
-              .setThumbnail(usingGIF)
-              .setTimestamp()
-              .setFooter(XLfooter)
-              .addFields(
-               { name: `List Tìm Kiếm | Trang ${i+1}/${resarrstr.length}`   , value: '```fix\n' + resarrstr[i] +'```'  , inline: false },
-              )
-             .setTimestamp();
-             message.channel.send(exampleEmbed);
-            }  
-          }
-      })  
-}
-
-
-
 
 /// new info IMMORTAL
 
-if (command == ',im') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+if (command == ',imt') {{
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1101,8 +1082,8 @@ if (command == ',im') {{
 // MJ
 /// new info MJ
 if (command == ',mj') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1177,12 +1158,93 @@ if (command == ',mj') {{
           }
       })  
 }
+
   
+/// new info LG
+if (command == ',lg') {{
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+
+            request({
+          url: url,
+          json: true
+      }, 
+        function (error, response, body) {
+          var string ='';
+          if (!error && response.statusCode === 200) {
+              let entry = body
+              console.log(entry.length) 
+              let slall = entry.length;
+              function cach(maxcach , length)
+              {
+                khoangcach = "                                                                                                                                                                                    "
+                return khoangcach.substring(0, maxcach - length)
+              }
+             
+              var sllast = 0; 
+              var sllgg =0;
+              for (let i=1; i<entry.length; i++) {
+                var b = entry[i]["name"];
+                if(b.substring(0,7) == 'Legends' || b.substring(0,7) == 'Legends' ){
+                  sllast = sllast + 1;
+                }
+                if(b.substring(0,2) == 'LG' || b.substring(0,2) == 'LG' ){
+                  sllgg = sllgg + 1;
+                }
+
+              }
+              let indexarr = 0;
+              let resarrstr = [""]
+              var stt = 1;
+              for (let i=0; i<entry.length; i++) 
+              {
+                var b = entry[i]["name"];
+                if(b.substring(0,7) == 'Legends' || b.substring(0,7) == 'Legends' )
+                {
+                  let ID = '[ID:' + entry[i]["id"] + ']' +cach(4 , entry[i]["id"].toString().length)
+                  resarrstr[indexarr] += `\n#${stt + cach(3 , stt.toString().length)}${ID}: ${entry[i]["name"]}`
+                  stt= stt + 1;
+                  if (resarrstr[indexarr].length > 900) resarrstr[++indexarr] =""
+                  if (!resarrstr[indexarr])  resarrstr.splice(indexarr, 1)
+                }
+              } 
+              for (let i=0; i<entry.length; i++) 
+              {
+                var b = entry[i]["name"];
+                 if(b.substring(0,2) == 'LG' || b.substring(0,2) == 'LG' ){
+                  let ID = '[ID:' + entry[i]["id"] + ']' +cach(4 , entry[i]["id"].toString().length)
+                  resarrstr[indexarr] += `\n#${stt + cach(3 , stt.toString().length)}${ID}: ${entry[i]["name"]}`
+                  stt= stt + 1;
+                  if (resarrstr[indexarr].length > 900) resarrstr[++indexarr] =""
+                  if (!resarrstr[indexarr])  resarrstr.splice(indexarr, 1)
+                }
+              }
+            indexarr = indexarr - 1;
+            for (let i=0 ; i< resarrstr.length ; i++)
+            {
+              const exampleEmbed = new Discord.MessageEmbed()
+              .setColor('#42f5b3')
+              .setTitle('Legends: ' + sllast + ' | LG: ' + sllgg)
+              .setAuthor('Anh Chị Em RP.', 'https://cdn.discordapp.com/attachments/569209589967486984/811540612989845524/ACE_logo_7000x7000_300ppi.png')                    
+              .setThumbnail(usingGIF)
+              .setTimestamp()
+              .setFooter(XLfooter)
+              .addFields(
+               { name: `List Tìm Kiếm | Trang ${i+1}/${resarrstr.length}`   , value: '```fix\n' + resarrstr[i] +'```'  , inline: false },
+              )
+             .setTimestamp();
+             message.channel.send(exampleEmbed);
+            }  
+          }
+      })  
+}
+
+
 /// new info Squad
 
 if (command == ',sq') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1263,8 +1325,8 @@ if (command == ',sq') {{
   //
 
 if (command == ',aca') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1347,8 +1409,8 @@ if (command == ',aca') {{
 /// new info Dân chơi
 
 if (command == ',dc') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1413,8 +1475,8 @@ if (command == ',dc') {{
 /// new info Paradise
 
 if (command == ',para') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1478,8 +1540,9 @@ if (command == ',para') {{
 
 /// new info Marabunta
 if (command == ',mara') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+
             request({
           url: url,
           json: true
@@ -1543,8 +1606,9 @@ if (command == ',mara') {{
 /// new info Villains
 
 if (command == ',vil') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+
             request({
           url: url,
           json: true
@@ -1607,8 +1671,8 @@ if (command == ',vil') {{
 /// new info J4F
 
 if (command == ',j4f') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1672,8 +1736,8 @@ if (command == ',j4f') {{
   // zoo //
   //
 if (command == ',zoo') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1736,8 +1800,8 @@ if (command == ',zoo') {{
    // simple //
   //
 if (command == ',sim') {{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1800,8 +1864,9 @@ if (command == ',sim') {{
 /// KTS
 
 if (command == ',kts') {{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+
             request({
           url: url,
           json: true
@@ -1864,8 +1929,9 @@ if (command == ',kts') {{
 // thelord //
   //
 if (command == ',tl') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
+
             request({
           url: url,
           json: true
@@ -1928,8 +1994,8 @@ if (command == ',tl') {{
 // RB //
   //
 if (command == ',rb') {{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -1995,8 +2061,8 @@ if (command == ',rb') {{
 // zoombie//
   //
 if (command == ',zoombie') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2060,8 +2126,8 @@ if (command == ',zoombie') {{
 // stormblck//
   //
 if (command == ',stormback') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2125,8 +2191,8 @@ if (command == ',stormback') {{
 // Kingsman //
   //
 if (command == ',king') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2147,7 +2213,7 @@ if (command == ',king') {{
               var slking = 0
               for (let i=1; i<entry.length; i++) {
                 var b = entry[i]["name"];
-                if(b.substring(0,8) == 'Kingsman' || b.substring(0,8) == 'KINGSMAN'){
+                if(b.substring(0,8) == 'Kingsman' || b.substring(0,9) == ' Kingsman'){
                   slking = slking + 1;
                 }
               }
@@ -2157,7 +2223,7 @@ if (command == ',king') {{
               for (let i=0; i<entry.length; i++) 
               {
                 var b = entry[i]["name"];
-                if(b.substring(0,8) == 'Kingsman' || b.substring(0,8) == 'KINGSMAN')
+                if(b.substring(0,8) == 'Kingsman' || b.substring(0,9) == ' Kingsman')
                 {
                   let ID = '[ID:' + entry[i]["id"] + ']' +cach(4 , entry[i]["id"].toString().length)
                   resarrstr[indexarr] += `\n#${stt + cach(3 , stt.toString().length)}${ID}: ${entry[i]["name"]}`
@@ -2189,8 +2255,8 @@ if (command == ',king') {{
   // SEA //
   //
 if (command == ',seal') {{
- if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2256,8 +2322,8 @@ if (command == ',seal') {{
 /// new info BL
 
 if (command == ',bl') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2317,74 +2383,12 @@ if (command == ',bl') {{
       })  
 }
 
-// LG
-if (command == ',lg') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
-
-            request({
-          url: url,
-          json: true
-      }, 
-        function (error, response, body) {
-          var string ='';
-          if (!error && response.statusCode === 200) {
-              let entry = body
-              console.log(entry.length) 
-              let slall = entry.length;
-              function cach(maxcach , length)
-              {
-                khoangcach = "                                                                                                                                                                                    "
-                return khoangcach.substring(0, maxcach - length)
-              }
-             
-              var slaa = 0
-              for (let i=1; i<entry.length; i++) {
-                var b = entry[i]["name"];
-                if(b.substring(0,2) == 'LG' || b.substring(0,2) == 'LG'){
-                  slaa = slaa + 1;
-                }
-              }
-              let indexarr = 0;
-              let resarrstr = [""]
-              var stt = 1;
-              for (let i=0; i<entry.length; i++) 
-              {
-                var b = entry[i]["name"];
-                if(b.substring(0,2) == 'LG' || b.substring(0,2) == 'LG')
-                {
-                  let ID = '[ID:' + entry[i]["id"] + ']' +cach(4 , entry[i]["id"].toString().length)
-                  resarrstr[indexarr] += `\n#${stt + cach(3 , stt.toString().length)}${ID}: ${entry[i]["name"]}`
-                  stt= stt + 1;
-                  if (resarrstr[indexarr].length > 900) resarrstr[++indexarr] =""
-                  if (!resarrstr[indexarr])  resarrstr.splice(indexarr, 1)
-                }
-              } 
-            indexarr = indexarr - 1;
-            for (let i=0 ; i< resarrstr.length ; i++)
-            {
-              const exampleEmbed = new Discord.MessageEmbed()
-              .setColor('#42f5b3')
-              .setTitle('Số Lượng Nhóm LG: ' + slaa)
-              .setAuthor('Anh Chị Em RP.', 'https://cdn.discordapp.com/attachments/569209589967486984/811540612989845524/ACE_logo_7000x7000_300ppi.png')                    
-              .setThumbnail(usingGIF)
-              .setTimestamp()
-              .setFooter(XLfooter)
-              .addFields(
-                { name: `List Tìm Kiếm | Trang ${i+1}/${resarrstr.length}`   , value: '```fix\n' + resarrstr[i] +'```'  , inline: false },
-              )
-             .setTimestamp();
-             message.channel.send(exampleEmbed);
-            }  
-          }
-      })  
-}
 
 // vietjetair
 
 if (command == ',viet') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2447,8 +2451,8 @@ if (command == ',viet') {{
   // tửu lầu //
   //
 if (command == ',tuulau') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2512,8 +2516,8 @@ if (command == ',tuulau') {{
   // equality //
   //
 if (command == ',equality') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2575,8 +2579,8 @@ if (command == ',equality') {{
 //HELL//
   //
 if (command == ',hell') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2638,8 +2642,8 @@ if (command == ',hell') {{
 
   // PT
 if (command == ',pt') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
 
             request({
           url: url,
@@ -2701,8 +2705,8 @@ if (command == ',pt') {{
   
   //// nhom ////
 if (command == ',gang2') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
      
 
             request({
@@ -2714,7 +2718,7 @@ if (command == ',gang2') {{
               let entry = body
               console.log(entry.length)
 
-              var slvll = 0; var slpara = 0; var slkts = 0; var slj4f = 0; var slmu =0; var slasa =0; var slzom =0; var sltl =0; var slst =0; var slrb =0; var slsea =0; var slbl =0; var slviet =0; var sleq =0; var slaa =0; var slhell =0; var slpt =0; var slking =0;
+              var slvll = 0; var slpara = 0; var slkts = 0; var slj4f = 0; var slmu =0; var sltl =0; var slrb =0; var slsea =0; var slviet =0; var sleq =0; var slhell =0; var slpt =0; var slking =0;
               for (let i=1; i<entry.length; i++)
              {
                 var a = entry[i]["name"]; 
@@ -2742,21 +2746,12 @@ if (command == ',gang2') {{
                  }        
                 if(a.substring(0,4) == 'HELL' || a.substring(0,4) == 'Hell'){
                   slhell = slhell + 1;
-                 }          
-                 if(a.substring(0,7) == 'Zoombie' || a.substring(0,7) == 'zoombie'){
-                  slzom = slzom + 1;
-                 }  
+                 }            
                 if(a.substring(0,8) == 'Kingsman' || a.substring(0,8) == 'KINGSMAN'){
                   slking = slking + 1;
-                 } 
-                 if(a.substring(0,9) == 'Bạch Long' || a.substring(0,9) == 'BẠCH LONG'){ 
-                  slbl = slbl + 1;
-                 } 
+                 }  
                   if(a.substring(0,10) == 'VietJetAir' || a.substring(0,10) == 'VietJetair'){ 
                   slviet = slviet + 1;
-                 } 
-                  if(a.substring(0,2) == 'LG' || a.substring(0,2) == 'LG'){ 
-                  slaa = slaa + 1;
                  } 
                 if(a.substring(0,8) == 'EQUALITY' || a.substring(0,8) == 'Equality'){ 
                   sleq = sleq + 1;
@@ -2776,8 +2771,6 @@ if (command == ',gang2') {{
               .setTimestamp()
               .setFooter(XLfooter)
               .addFields(
-                  {name:'** - Số Lượng Nhóm Zoombie **:'         +"  " + slzom ,value: '➖➖➖➖➖➖➖➖➖➖' },
-                  {name:'** - Số Lượng Nhóm Bạch Long **:'         +"  " + slbl ,value: '➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Nhóm KTS **:' +"  " + slkts ,value: '➖➖➖➖➖➖➖➖➖➖' },  
                   {name:'** - Số Lượng Nhóm Paradise **:'       +"  " + slpara ,value: '➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Nhóm J4F **:' +"  " + slj4f ,value: '➖➖➖➖➖➖➖➖➖➖' },  
@@ -2785,7 +2778,6 @@ if (command == ',gang2') {{
                   {name:'** - Số Lượng Nhóm RB **:'         +"  " + slrb ,value: '➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Nhóm VietJetAir **:'         +"  " + slviet ,value: '➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Nhóm Equality **:'         +"  " + sleq ,value: '➖➖➖➖➖➖➖➖➖➖' },
-                  {name:'** - Số Lượng Nhóm LG **:'         +"  " + slaa ,value: '➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Nhóm Marabunta **:' +"  " + slmu ,value: '➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Nhóm Villains **:' +"  " + slvll ,value: '➖➖➖➖➖➖➖➖➖➖' }, 
                   {name:'** - Số Lượng Nhóm PT **:'         +"  " + slpt ,value: '➖➖➖➖➖➖➖➖➖➖' },
@@ -2802,8 +2794,8 @@ if (command == ',gang2') {{
 
 
 if (command == ',gang') {{
-  if(message.author.id === '445142222896234497')
-    return message.channel.send(`Mày bảo ai ý thức kém?, ${message.author}!`)};
+   if(message.author.id === '445142222896234497')
+    return message.channel.send(`Có con cặc mà check được, ${message.author}!`)};
      
 
             request({
@@ -2815,17 +2807,11 @@ if (command == ',gang') {{
               let entry = body
               console.log(entry.length)
 
-              var sltt = 0; var slim = 0; var slmj = 0; var slsqd =0; var slth=0; var slmrj =0; var slsq =0; var slimt =0; var slaca =0; var sldemy =0;
+              var slim = 0; var slmj = 0; var slsqd =0; var slmrj =0; var slsq =0; var slimt =0; var slaca =0; var sldemy =0; var sllgg =0; var sllast = 0;
               for (let i=1; i<entry.length; i++)
              {
                 var a = entry[i]["name"]; 
              
-                 if(a.substring(0,11) == 'Thiên Triều' || a.substring(0,11) == 'THIÊN TRIỀU' ){
-                  sltt = sltt + 1;
-                 }
-                if(a.substring(0,11) == 'Thiên Hoàng' || a.substring(0,11) == 'THIÊN HOÀNG' ){
-                  slth = slth + 1;
-                }
                  if(a.substring(0,8) == 'Immortal' || a.substring(0,8) == 'IMMORTAL'){
                   slim = slim + 1;
                  }
@@ -2851,6 +2837,12 @@ if (command == ',gang') {{
                if(a.substring(0,7) == 'Academy' || a.substring(0,7) == 'Academy' ){
                   sldemy = sldemy + 1;
                  }
+               if(a.substring(0,7) == 'Legends' || a.substring(0,7) == 'Legends' ){
+                  sllast = sllast + 1;
+                 }
+                if(a.substring(0,2) == 'LG' || a.substring(0,2) == 'LG' ){
+                  sllgg = sllgg + 1;
+                }
               }
               const exampleEmbed = new Discord.MessageEmbed()
               .setColor('#3019ff')
@@ -2860,11 +2852,11 @@ if (command == ',gang') {{
               .setTimestamp()
               .setFooter(XLfooter)
               .addFields(
-                  {name:'** - Số Lượng Gang Thiên Triều **:' +"  " + sltt + '   |  Thiên Hoàng: ' + slth  ,value: '➖➖➖➖➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Gang Immortal **:' +"  " + slim + '          |    IMT: ' + slimt ,value: '➖➖➖➖➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Gang MJ **:'  +"  " + slmj + '               |    MrJ: ' + slmrj ,value: '➖➖➖➖➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Gang Squad **:'  +"  " + slsqd + '           |    SQ: ' + slsq ,value: '➖➖➖➖➖➖➖➖➖➖➖➖➖➖' },
                   {name:'** - Số Lượng Gang ACA **:'         +"  " + slaca + '      |    Academy: ' + sldemy ,value: '➖➖➖➖➖➖➖➖➖➖' },
+                {name:'** - Số Lượng Gang Legends  **:' +"  " + sllast + '       |    LG: ' + sllgg  ,value: '➖➖➖➖➖➖➖➖➖➖➖➖➖➖' },
                   )
               .setImage('https://cdn.discordapp.com/attachments/697049699193978941/746691133660332092/divider_1.gif')    
                message.channel.send(exampleEmbed);
@@ -2906,8 +2898,7 @@ var bot_id = 915613183023120434
     })
   
 }); 
-client.login('OTE1NjEzMTgzMDIzMTIwNDM0.YaeJOg.s9SqlN3gSuPa1ODcj3SnCHUmp-Y');
+client.login('OTE1NjEzMTgzMDIzMTIwNDM0.GKNr_j._jFZXInIyUgE93fQgKaiNB5FcdAXUrjGZgcOV0');
 // xl ODY0NDE1NTEyMTM3NTY0MTgw.YO1Hrg.kraKyE53_QOHn1knJXEVSOiabfQ
-
 
 
